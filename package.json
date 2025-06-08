@@ -3,7 +3,7 @@
   "displayName": "Breakpoint Tool",
   "description": "Add breakpoints to all lines found in search results",
   "version": "1.0.0",
-  "publisher": "github.com/gmonarque",
+  "publisher": "breakpoint-tool",
   "engines": {
     "vscode": "^1.74.0"
   },
