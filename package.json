@@ -1,0 +1,105 @@
+{
+  "name": "breakpoint-tool",
+  "displayName": "Breakpoint Tool",
+  "description": "Add breakpoints to all lines found in search results",
+  "version": "1.0.0",
+  "publisher": "github.com/gmonarque",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "breakpoints",
+    "debugging",
+    "search",
+    "development"
+  ],
+  "activationEvents": [
+    "onView:breakpointSearchView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "breakpoint-tool.addBreakpointToCurrentLine",
+        "title": "Add Breakpoint to Current Line",
+        "category": "Breakpoint Tool"
+      },
+      {
+        "command": "breakpoint-tool.clearAllBreakpoints",
+        "title": "Clear All Breakpoints in File",
+        "category": "Breakpoint Tool"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "breakpoint-tool.addBreakpointToCurrentLine",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "breakpoint-tool.clearAllBreakpoints",
+        "key": "ctrl+shift+alt+c",
+        "mac": "cmd+shift+alt+c",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "breakpoint-tool.addBreakpointToCurrentLine",
+          "group": "debug",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "breakpoint-tool.clearAllBreakpoints",
+          "group": "debug",
+          "when": "editorTextFocus"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "breakpoint-tool.addBreakpointToCurrentLine",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "breakpoint-tool.clearAllBreakpoints",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "views": {
+      "breakpoint-search": [
+        {
+          "id": "breakpointSearchView",
+          "name": "Search & Breakpoints",
+          "type": "webview",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "breakpoint-search",
+          "title": "Breakpoint Search",
+          "icon": "$(debug-breakpoint)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  }
+}
